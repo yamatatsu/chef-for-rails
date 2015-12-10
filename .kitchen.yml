@@ -1,18 +1,17 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  publish:
+    - 8100:80
 
 provisioner:
-  name: chef_zero
-
-# Uncomment the following verifier to leverage Inspec instead of Busser (the
-# default verifier)
-# verifier:
-#   name: inspec
+  name: chef_solo
 
 platforms:
-  - name: ubuntu-14.04
-  - name: centos-7.1
+  - name: AmazonLinux-201509
+    driver:
+      image_id: ami-383c1956
+      username: ec2-user
 
 suites:
   - name: default
